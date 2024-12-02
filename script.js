@@ -1,24 +1,27 @@
-const timeZones = {
-    "new_york": { name: "New York", offset: -5 },
-    "london": { name: "London", offset: 0 },
-    "tokyo": { name: "Tokyo", offset: 9 },
-    "nairobi": { name: "Nairobi", offset: 3 },
-    "dhaka": { name: "Dhaka", offset: 6 },
-    "xx1": { name: "xx1", offset: 1 },
-    "xx2": { name: "xx2", offset: 3 },
-    "xx3": { name: "xx3", offset: -2 },
-    "xx4": { name: "xx4", offset: 8 },
-    "xx5": { name: "xx5", offset: -7 },
-    "xx6": { name: "xx6", offset: -1 },
-    "xx7": { name: "xx7", offset: 9 },
-    // Add more time zones as needed
-};
-
-const initialTimeZones = Object.keys(timeZones).slice(0, 9); // First 9 time zones
+let timeZones = {}; // Placeholder for time zone data
+const initialTimeZones = []; // First 9 time zones will be determined dynamically
 let timeFormat = "24"; // Default time format
+
+// Fetch the time zone data from the JSON file
+fetch("timeZones.json")
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Failed to load time zone data.");
+        }
+        return response.json();
+    })
+    .then((data) => {
+        timeZones = data;
+        Object.keys(timeZones).slice(0, 9).forEach((key) => initialTimeZones.push(key));
+        generateClocks();
+        handleTimeFormatChange();
+        setInterval(updateAllClocks, 1000);
+    })
+    .catch((error) => console.error("Error loading time zones:", error));
 
 function generateClocks() {
     const clocksContainer = document.getElementById("clocks");
+    clocksContainer.innerHTML = ""; // Clear any existing clocks
 
     initialTimeZones.forEach((key) => {
         const clockDiv = document.createElement("div");
@@ -86,7 +89,3 @@ function handleTimeFormatChange() {
         updateAllClocks(); // Update all clocks immediately after changing format
     });
 }
-
-generateClocks();
-handleTimeFormatChange();
-setInterval(updateAllClocks, 1000);
