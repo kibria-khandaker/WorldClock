@@ -8,13 +8,18 @@
     <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
 </head>
 <body>
+    
     <div id="toolbar">
         <label for="timeFormat">Time Format:</label>
         <select id="timeFormat">
             <option value="24">24-hour</option>
             <option value="12">12-hour (AM/PM)</option>
         </select>
+        <label for="clockCount">Number of Clocks:</label>
+        <input type="number" id="clockCount" min="1" max="50" value="9" />
+        <button id="updateClocks">Update</button>
     </div>
+
     <div id="clocks"></div>
     <script src="script.js"></script> <!-- Your JavaScript file -->
 </body>

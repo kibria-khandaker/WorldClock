@@ -1,6 +1,9 @@
 let timeZones = {}; // Placeholder for time zone data
-const initialTimeZones = []; // First 9 time zones will be determined dynamically
+let initialTimeZones = []; // Dynamic list of selected time zones
 let timeFormat = "24"; // Default time format
+let clockCount = 9; // Default number of clocks
+const MAX_CLOCKS = 195; // Maximum number of clocks
+const MIN_CLOCKS = 1;   // Minimum number of clocks
 
 // Fetch the time zone data from the JSON file
 fetch("timeZones.json")
@@ -12,16 +15,17 @@ fetch("timeZones.json")
     })
     .then((data) => {
         timeZones = data;
-        Object.keys(timeZones).slice(0, 9).forEach((key) => initialTimeZones.push(key));
+        initialTimeZones = Object.keys(timeZones).slice(0, clockCount);
         generateClocks();
         handleTimeFormatChange();
+        handleClockCountChange();
         setInterval(updateAllClocks, 1000);
     })
     .catch((error) => console.error("Error loading time zones:", error));
 
 function generateClocks() {
     const clocksContainer = document.getElementById("clocks");
-    clocksContainer.innerHTML = ""; // Clear any existing clocks
+    clocksContainer.innerHTML = ""; // Clear existing clocks
 
     initialTimeZones.forEach((key) => {
         const clockDiv = document.createElement("div");
@@ -87,5 +91,32 @@ function handleTimeFormatChange() {
     formatSelector.addEventListener("change", () => {
         timeFormat = formatSelector.value;
         updateAllClocks(); // Update all clocks immediately after changing format
+    });
+}
+
+function handleClockCountChange() {
+    const clockCountInput = document.getElementById("clockCount");
+    const updateButton = document.getElementById("updateClocks");
+
+    updateButton.addEventListener("click", () => {
+        const inputValue = clockCountInput.value.trim();
+
+        // Validate input
+        if (!/^\d+$/.test(inputValue)) {
+            alert("Invalid input! Please enter a valid or positive number.");
+            return;
+        }
+
+        const newCount = parseInt(inputValue, 10);
+        if (newCount < MIN_CLOCKS || newCount > MAX_CLOCKS) {
+            alert(
+                `Invalid input! Please enter a value between ${MIN_CLOCKS} and ${MAX_CLOCKS}.`
+            );
+            return;
+        }
+
+        clockCount = newCount;
+        initialTimeZones = Object.keys(timeZones).slice(0, clockCount);
+        generateClocks();
     });
 }
