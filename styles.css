@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
@@ -32,35 +32,39 @@ body {
     gap: 20px;
     padding: 20px;
     justify-content: center;
-}
+} */
 
+
+
+/* --------------------  */
 .clock {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 15px;
+    padding: 13px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    max-width: 200px;
 }
 
 .clock select {
     margin-bottom: 10px;
-    padding: 5px;
-    width: 100%;
+    padding: 2px;
+    width: 60%;
+    border-radius: 3px;
     border: 1px solid #ddd;
-    border-radius: 5px;
     outline: none;
 }
 
 .clock h2 {
-    margin: 10px 0;
+    /* margin: 10px 0;
     font-size: 18px;
-    font-weight: bold;
+    */
+    /* font-weight: bold; */
 }
 
 .clock p.time {
-    font-size: 24px;
     font-weight: bold;
-    margin: 5px 0;
+    /* font-size: 24px;
+    margin: 5px 0; */
 }

@@ -6,21 +6,28 @@
     <title>World Clock</title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Include Tailwind CSS -->
 </head>
-<body>
+<body class="font-sans bg-gray-200 text-gray-800">
     
-    <div id="toolbar">
-        <label for="timeFormat">Time Format:</label>
-        <select id="timeFormat">
-            <option value="24">24-hour</option>
-            <option value="12">12-hour (AM/PM)</option>
-        </select>
-        <label for="clockCount">Number of Clocks:</label>
-        <input type="number" id="clockCount" min="1" max="50" value="9" />
-        <button id="updateClocks">Update</button>
+    <div id="toolbar" class="flex flex-col lg:flex-row gap-5 justify-evenly items-center py-4 bg-teal-900">
+        <div class="">
+            <label for="clockCount"  class="border p-2 border-r-0 text-white"  >Number of Clocks </label>
+            <input type="number" id="clockCount" min="1" max="50" value="9" class="p-2 rounded-r border-none outline-none w-16  lg:w-20 text-center" />
+            <button id="updateClocks"  class="px-4 py-2 bg-white rounded hover:bg-gray-200" >Update</button>
+        </div>
+
+        <div class="">
+            <label for="timeFormat" class="border p-2 border-r-0 text-white" >Time Format </label>
+            <select id="timeFormat" class="p-2 rounded-r border-none outline-none">
+                <option value="24">24-hour</option>
+                <option value="12">12-hour (AM/PM)</option>
+            </select>
+        </div>
+        
     </div>
 
-    <div id="clocks"></div>
+    <div id="clocks"  class="grid lg:grid-cols-3 grid-cols-2 place-self-center lg:gap-5 gap-2 lg:m-5 m-2"> </div>
     <script src="script.js"></script> <!-- Your JavaScript file -->
 </body>
 </html>
