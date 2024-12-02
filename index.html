@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="world-clock">
-        <h1>World Clock</h1>
-        <div id="clocks"></div> <!-- Placeholder for dynamic clocks -->
+    <div id="controls">
+        <label for="timeFormat">Select Time Format:</label>
+        <select id="timeFormat">
+            <option value="24">24-Hour</option>
+            <option value="12">12-Hour (AM/PM)</option>
+        </select>
     </div>
+    <div id="clocks"></div>
     <script src="script.js"></script>
 </body>
 </html>
