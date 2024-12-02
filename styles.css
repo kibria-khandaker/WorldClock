@@ -1,45 +1,66 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f4f4f9;
     color: #333;
-    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-.world-clock {
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-#controls {
+#toolbar {
     display: flex;
     justify-content: flex-end;
-    padding: 10px;
-    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #83c1ff;
+    color: #fff;
+}
+
+#toolbar label {
+    margin-right: 10px;
+}
+
+#toolbar select {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
 #clocks {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
     justify-content: center;
 }
 
 .clock {
-    background: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
     text-align: center;
-    width: 150px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.clock select {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
 }
 
 .clock h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.clock .time {
-    font-size: 1.25em;
+.clock p.time {
+    font-size: 24px;
     font-weight: bold;
+    margin: 5px 0;
 }
